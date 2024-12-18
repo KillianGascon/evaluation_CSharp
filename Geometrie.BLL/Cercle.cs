@@ -8,6 +8,7 @@ namespace Geometrie.BLL
 {
     public class Cercle : IForme
     {
+        public int? Id { get; set; }
         public Point Centre { get; private set; }
         public double Rayon { get; private set; }
 
@@ -18,7 +19,7 @@ namespace Geometrie.BLL
         }
 
         public double CalculerPerimetre() => 2 * Math.PI * Rayon;
-
+        
         public double CalculerAire() => Math.PI * Math.Pow(Rayon, 2);
     }
 }

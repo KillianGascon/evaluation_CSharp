@@ -1,4 +1,6 @@
-﻿using Geometrie.DTO;
+﻿using Geometrie.BLL;
+using Geometrie.BLL.Depots;
+using Geometrie.DTO;
 using Geometrie.Service;
 using Microsoft.AspNetCore.Mvc;
 
@@ -80,5 +82,10 @@ namespace Geometrie.API.Controllers
 
             return service.CalculerDistance(id1, id2, IP);
         }
+
     }
+
+    
+
+
 }

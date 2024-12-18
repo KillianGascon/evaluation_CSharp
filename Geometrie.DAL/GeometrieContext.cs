@@ -46,6 +46,7 @@ namespace Geometrie.DAL
         /// </summary>
         public DbSet<Point_DAL> Points { get; set; }
         public DbSet<Log_DAL> Logs { get; set; }
+        public DbSet<Cercle_DAL> Cercles { get; set; }
         #endregion
     }
 }

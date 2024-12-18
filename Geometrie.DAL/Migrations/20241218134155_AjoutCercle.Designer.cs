@@ -4,6 +4,7 @@ using Geometrie.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Geometrie.DAL.Migrations
 {
     [DbContext(typeof(GeometrieContext))]
-    partial class GeometrieContextModelSnapshot : ModelSnapshot
+    [Migration("20241218134155_AjoutCercle")]
+    partial class AjoutCercle
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,15 +33,16 @@ namespace Geometrie.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
 
-                    b.Property<int>("CentreId")
-                        .HasColumnType("int");
-
                     b.Property<double>("Rayon")
                         .HasColumnType("float");
 
-                    b.HasKey("Id");
+                    b.Property<int>("X")
+                        .HasColumnType("int");
 
-                    b.HasIndex("CentreId");
+                    b.Property<int>("Y")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Cercles");
                 });
@@ -111,17 +115,6 @@ namespace Geometrie.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Polygone");
-                });
-
-            modelBuilder.Entity("Geometrie.DAL.Cercle_DAL", b =>
-                {
-                    b.HasOne("Geometrie.DAL.Point_DAL", "Centre")
-                        .WithMany()
-                        .HasForeignKey("CentreId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Centre");
                 });
 
             modelBuilder.Entity("Geometrie.DAL.Point_DAL", b =>
